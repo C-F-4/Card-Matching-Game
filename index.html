@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Matching Game</title>
+  <meta name="description" content="">
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/slider.css">
+</head>
+
+<body>
+  <div class="slider">
+    <div class="slide-left"></div>
+    <div class="slide-right"></div>
+    <div class="slide-box">
+      <div class="slide slide1">
+        <div class="slide-content table-centering">
+          <div class="center-me">
+            <h1>Matching Game</h1>
+            <p class="info-message">Flip all the cards to Win the Game.</p>
+            <div class="level-buttons">
+              <div>
+                <button class="btn easy col-md-6">
+                  <span>Easy</span>
+                </button>
+              </div>
+              <div>
+                <button class="btn medium col-md-6">
+                  <span>Medium</span>
+                </button>
+              </div>
+              <div>
+                <button class="btn hard col-md-6">
+                  <span>Hard</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide slide2">
+        <div class="slide-content game-container container">
+          
+          <section class="score-panel text-center">
+            <ul class="stars pull-left"></ul>
+          
+            <span>
+              <span class="moves"></span> Moves
+            </span>
+
+            <div class="restart">
+              <i class="fa fa-repeat"></i>
+            </div>
+          </section>
+          
+          <ul class="deck"></ul>
+        </div>
+      </div>
+
+      <div class="slide slide3">
+        <div class="slide-content table-centering">
+          <div class="center-me">
+            <h1 class="congrats-header">Congratulations!</h1>
+            <p class="info-message">You have won.</p>
+            <div class="level-buttons">
+              <button class="btn replay col-md-6">
+                <span>Replay</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+
+  <script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/slider.js"></script>
+</body>
+
+</html>

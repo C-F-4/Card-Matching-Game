@@ -1,0 +1,250 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+
+/* Styles, not important */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-container {
+    background: none !important;
+    background-color: none !important;
+    color: grey !important;
+}
+
+h1 {
+    font-family: pacfontregular, 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/* Congratulations Slide */
+.congrats-header {
+  font-family: snigletextrabold, 'Open Sans', sans-serif;
+  text-shadow: 0.3vh 0.3vh 0vh black,
+    -0.3vh -0.3vh 0vh black,
+    -0.3vh 0.3vh 0vh black,
+    0.3vh -0.3vh 0vh black,
+    0.3vh 0vh 0vh black,
+    0vh 0.3vh 0vh black,
+    -0.3vh 0vh 0vh black,
+    0vh -0.3vh 0vh black,
+    0vh 0.5vh 0vh black;
+  text-align: center;
+  font-size: 6vh;
+  font-weight: 900;
+  color: #ffaac7;
+}
+
+.info-message {
+  font-family: snigletregular;
+}
+
+/* Vertical Alignment */
+.table-centering {
+  display: table;
+}
+
+.center-me {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Buttons */
+.level-buttons {
+    display: block;
+}
+
+.btn {
+  position: relative;
+
+  display: inline-block;
+  margin: 20px auto;
+  padding: 0;
+
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  
+  color: #ecf0f1;
+  
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  cursor: pointer;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+
+.btn:before {
+  content: "";
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  display: block;
+  width: 0;
+  padding-top: 0;
+    
+  border-radius: 100%;
+  
+  background-color: rgba(236, 240, 241, .3);
+  
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  
+  transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.btn.easy {
+    background-color: #2ecc71;
+}
+
+.btn.easy:hover, .btn.easy:focus {
+    background-color: #27ae60;
+}
+
+.btn.medium {
+    background-color: #e67e22;
+}
+
+.btn.medium:hover, .btn.medium:focus {
+    background-color: #d35400;
+}
+
+.btn.hard {
+    background-color: #e74c3c;
+}
+
+.btn.hard:hover, .btn.hard:focus {
+    background-color: #c0392b;
+}
+
+.btn.replay {
+  box-shadow: 0.5vh 0.5vh #1f607d,
+    0.375vh 0.375vh #1f607d inset;
+  border: 1vh solid #1694cb;
+  background-color: #29aae3;
+}
+
+.btn.replay:hover, .btn.replay:focus {
+    background-color: #0282c2;
+}
+
+/* Styles for the deck of cards */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+/* Styles for the Score Panel */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
