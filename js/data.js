@@ -28,5 +28,11 @@ const gameLevels = {
 const errors = {
     not_sufficient_cards: {
         message: "There are insufficient cards to fill up the board without repition."
+    },
+    lost_timer: {
+        message: "Apparently, we have lost control of the timer or it was never started! Try refreshing the window."
+    },
+    general_error: {
+      message: "Some error occured. Try reloading the window."
     }
 }

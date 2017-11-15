@@ -76,6 +76,6 @@ $restartControl.on('click', function () {
 
 $replayControl.on('click', function () {
   $rightControl.click();
-  reset();
+  resetGameStats();
   hideAllExcept('slide1');
 });

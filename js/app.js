@@ -5,19 +5,33 @@ $game = $('.game-container');
 $deck = $game.find('.deck');
 $moveControl = $game.find('.moves');
 $starControl = $game.find('.stars');
+$timerControl = $game.find('.timer');
+
+$gameFinished = $('.game-finished');
+$movesCounterControl = $gameFinished.find('.movesCounter');
+$completionTimeControl = $gameFinished.find('.completionTime');
 
 var allCards = [];
 var movesCount = 0;
 var starRating = 3;
+var isGameStarted = false;
+var timer = null;
+var timerId = undefined;
 
 var click1 = {};
 var click2 = {};
 var matches = 0;
 
+var gameStats = {
+  timer: null,
+  movesCount: 0
+};
+
 /*
  * Game Initializer
  */
 function initBoard(level) {
+  resetGameStats();
   var maxLength = faClassList.length;
   var numberOfCards = level.pairs * 2;
   if (level.pairs <= maxLength) {
@@ -35,8 +49,11 @@ function initBoard(level) {
     movesCount = 0;
     matches = 0;
     starRating = 3;
+    isGameStarted = false;
+    timer = '00:00';
     generatePairs();
     initializeCards();
+    initializeTimer();
     updateMoves();
     updateStars();
   } else {
@@ -78,6 +95,10 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 function openCard(index, cardId) {
+  if (!isGameStarted) {
+    isGameStarted = true;
+    startGameTimer();
+  }
   if (!isNumber(click1.index)) {
     movesCount ++;
     updateMoves();
@@ -155,6 +176,38 @@ function initializeCards() {
   });
 }
 
+function startGameTimer() {
+  var startTime = new Date().getTime();
+
+  timerId = setInterval(function() {
+    var currentTime = new Date().getTime();
+    var elapsedTime = currentTime - startTime;
+
+    var minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+
+    timer = minutes + ':' + seconds;
+
+    $timerControl.text(timer);
+  }, 1000);
+}
+
+function stopGameTimer() {
+  if (timerId !== undefined && timerId !== null) {
+    clearInterval(timerId);
+  } else {
+    console.log(errors.lost_timer);
+  }
+}
+
 function reset() {
   allCards = [];
   matches = 0;
@@ -162,6 +215,21 @@ function reset() {
   starRating = 3;
   click1 = {};
   click2 = {};
+  isGameStarted = false;
+  timer = '00:00';
+  stopGameTimer();
+  timerId = undefined;
+}
+
+function resetGameStats() {
+  gameStats = {
+    timer: null,
+    movesCount: 0
+  };
+}
+
+function initializeTimer() {
+  $timerControl.text(timer);
 }
 
 function updateMoves() {
@@ -177,7 +245,14 @@ function updateStars() {
 }
 
 function gameCompleted() {
+  // save timer and movesCount before resetting
+  gameStats = {
+    timer: timer,
+    movesCount: movesCount
+  };
   reset();
+  $movesCounterControl.text(gameStats.movesCount);
+  $completionTimeControl.text(gameStats.timer);
   $rightControl.click();
   hideAllExcept('slide3');
 }

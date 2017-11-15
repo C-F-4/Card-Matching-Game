@@ -48,6 +48,9 @@
         <div class="slide-content game-container container">
           
           <section class="score-panel text-center">
+            
+            <span class="timer pull-left"></span>
+
             <ul class="stars pull-left"></ul>
           
             <span>
@@ -64,10 +67,15 @@
       </div>
 
       <div class="slide slide3">
-        <div class="slide-content table-centering">
+        <div class="slide-content table-centering game-finished">
           <div class="center-me">
             <h1 class="congrats-header">Congratulations!</h1>
             <p class="info-message">You have won.</p>
+            <p class="info-message">
+              <span>Game Stats: </span>
+              Moves: <span class="movesCounter"></span>
+              Time: <span class="completionTime"></span>
+            </p>
             <div class="level-buttons">
               <button class="btn replay col-xs-12 col-sm-8 col-md-6">
                 <span>Replay</span>
