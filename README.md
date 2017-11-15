@@ -10,4 +10,5 @@ to win the game.
 - [ ] Error Handling
 - [ ] Informational How-To play Pop up
 - [ ] Add Music and Volume Control
+- [ ] Multiple clicks Handling on Level Selection
 - [ ] Confirmation before restarting the game.
