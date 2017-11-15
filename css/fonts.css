@@ -4,7 +4,6 @@
        url('../fonts/pac-font-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
@@ -13,7 +12,6 @@
        url('../fonts/sniglet-extrabold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
@@ -22,5 +20,4 @@
        url('../fonts/sniglet-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
