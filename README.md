@@ -1,5 +1,6 @@
-# Card-Matching-Game
-Memory Game from Udacity Front End Projects
+# Card Matching Game
+Memory Game Demo - The player can select a level and play on the appropriate size of board. The player has to flip all the cards
+to win the game.
 
 ### To-Do
 - [ ] Score Functionality (Based on Timer and number of Moves)
