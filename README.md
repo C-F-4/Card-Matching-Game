@@ -9,3 +9,4 @@ Memory Game from Udacity Front End Projects
 - [ ] Error Handling
 - [ ] Informational How-To play Pop up
 - [ ] Add Music and Volume Control
+- [ ] Confirmation before restarting the game.
