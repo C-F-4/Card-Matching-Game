@@ -6,7 +6,7 @@ to win the game.
 - [ ] Score Functionality (Based on Timer and number of Moves)
 - [ ] Responsive Board Layout
 - [ ] Card Flip Animation
-- [ ] CSS update on Game completion Slide
+- [ ] UI Updates on Game completion Slide
 - [ ] Error Handling
 - [ ] Informational How-To play Pop up
 - [ ] Add Music and Volume Control
