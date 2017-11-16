@@ -51,31 +51,49 @@ hideAllExcept = (className) => {
 }
 
 $easyControl.on('click', function () {
+  disableBtn(gameLevels.easy.class);
   $rightControl.click();
   initBoard(gameLevels.easy);
   hideAllExcept('slide2');
+  setTimeout(()=>{enableBtn(gameLevels.easy.class)}, 1000);
 });
 
 $mediumControl.on('click', function () {
+  disableBtn(gameLevels.medium.class);
   $rightControl.click();
   initBoard(gameLevels.medium);
   hideAllExcept('slide2');
+  setTimeout(()=>{enableBtn(gameLevels.medium.class)}, 1000);
 });
 
 $hardControl.on('click', function () {
+  disableBtn(gameLevels.hard.class);
   $rightControl.click();
   initBoard(gameLevels.hard);
   hideAllExcept('slide2');
+  setTimeout(()=>{enableBtn(gameLevels.hard.class)}, 1000);
 });
 
 $restartControl.on('click', function () {
+  disableBtn('restart');
   $leftControl.click();
   reset();
   hideAllExcept('slide1');
+  setTimeout(()=>{enableBtn('restart')}, 1000);
 });
 
 $replayControl.on('click', function () {
+  disableBtn('replay');
   $rightControl.click();
   resetGameStats();
   hideAllExcept('slide1');
+  setTimeout(()=>{enableBtn('replay')}, 1000);
 });
+
+disableBtn = (className) => {
+  $('.' + className).attr("disabled", "true");
+}
+
+enableBtn = (className) => {
+  $('.' + className).removeAttr("disabled", "false");
+}
