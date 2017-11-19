@@ -103,13 +103,13 @@ function openCard(index, cardId) {
     movesCount ++;
     updateMoves();
     click1 = {'cardId': cardId, 'index': index};
-    $deck.find('#' + cardId).css('font-size', 22);
+    $deck.find('#' + cardId).addClass('show');
     return;
   } else if (!isNumber(click2.index) && click1.cardId != cardId) {
     movesCount ++;
     updateMoves();
     click2 = {'cardId': cardId, 'index': index};
-    $deck.find('#' + cardId).css('font-size', 22);
+    $deck.find('#' + cardId).addClass('show');
     if (isMatch(click1.index, click2.index)) {
       // keep flipped
       foundMatch();
@@ -139,6 +139,8 @@ function isMatch(index1, index2) {
 }
 
 function foundMatch() {
+  $deck.find('#' + click1.cardId).addClass('match');
+  $deck.find('#' + click2.cardId).addClass('match');
   $deck.find('#' + click1.cardId).unbind('click');
   $deck.find('#' + click2.cardId).unbind('click');
   click1 = {};
@@ -148,8 +150,8 @@ function foundMatch() {
 
 function hideUnmatchedCards() {
   setTimeout(function() {
-    $deck.find('#' + click1.cardId).css('font-size', 0);
-    $deck.find('#' + click2.cardId).css('font-size', 0);
+    $deck.find('#' + click1.cardId).removeClass('show');
+    $deck.find('#' + click2.cardId).removeClass('show');
     click1 = {};
     click2 = {};
   }, 500);

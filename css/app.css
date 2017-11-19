@@ -223,7 +223,7 @@ h1 {
   box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.open {
+/* .deck .card.open {
   -webkit-transform: rotateY(0);
   -moz-transform: rotateY(0);
   -ms-transform: rotateY(0);
@@ -231,16 +231,23 @@ h1 {
   transform: rotateY(0); 
   background: #02b3e4;
   cursor: default;
-}
+} */
 
 .deck .card.show {
+  background: #02b3e4;
+  cursor: default;
   font-size: 33px;
 }
 
 .deck .card.match {
   cursor: default;
-  background: #02ccba;
+  background: #1f607d;
   font-size: 33px;
+  -webkit-transition: background-color .3s;
+  -moz-transition: background-color .3s;
+  -ms-transition: background-color .3s;
+  -o-transition: background-color .3s;
+  transition: background-color .3s;
 }
 
 /* Styles for the Score Panel */
@@ -271,3 +278,20 @@ h1 {
 .hide-me {
   display: none !important;
 }
+
+/* Responsive Grid */
+/* @media (min-width: 960px) {
+  .deck li.card {
+    width: 25%;
+  }
+}
+
+@media (min-width: 768px) {
+  .deck li.card {
+    width: 33.33%;
+  }
+}*/
+
+/* Transitions */
+/* .grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); } */
