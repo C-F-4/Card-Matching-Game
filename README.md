@@ -1,6 +1,7 @@
 # Card Matching Game
-Memory Game Demo - The player can select a level and play on the appropriate size of board. The player has to flip all the cards
-to win the game.
+A web based game to implement some concepts of Angular(2-way Data Binding, Event Handling like click Events) and CSS Animations using jQuery and Vanilla Javascript.
+
+Memory Game Demo - The player can select a level and play on the appropriate size of board. The player has to flip all the cards to win the game.
 
 ### To-Do
 - [ ] Score Functionality (Based on Timer and number of Moves)
