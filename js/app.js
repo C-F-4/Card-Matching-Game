@@ -8,6 +8,7 @@ $starControl = $game.find('.stars');
 $timerControl = $game.find('.timer');
 
 $gameFinished = $('.game-finished');
+$starRatingControl = $gameFinished.find('.starRating');
 $movesCounterControl = $gameFinished.find('.movesCounter');
 $completionTimeControl = $gameFinished.find('.completionTime');
 
@@ -24,13 +25,16 @@ var matches = 0;
 
 var gameStats = {
   timer: null,
-  movesCount: 0
+  movesCount: 0,
+  starRating: 3
 };
+var currentLevel;
 
 /*
  * Game Initializer
  */
 function initBoard(level) {
+  currentLevel = level;
   resetGameStats();
   var maxLength = faClassList.length;
   var numberOfCards = level.pairs * 2;
@@ -95,6 +99,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 function openCard(index, cardId) {
+  calculateStars();
   if (!isGameStarted) {
     isGameStarted = true;
     startGameTimer();
@@ -113,6 +118,7 @@ function openCard(index, cardId) {
     if (isMatch(click1.index, click2.index)) {
       // keep flipped
       foundMatch();
+      calculateStars(true);
     } else {
       // hide cards
       hideUnmatchedCards();
@@ -131,6 +137,10 @@ function openCard(index, cardId) {
 // if data is valid number return true else false
 function isNumber(data) {
   return typeof data === 'number' ? true : false;
+}
+
+function isFloat(data) {
+  return Number(data) === data && data % 1 !== 0;
 }
 
 // Check if card at index1 and index2 has same className
@@ -226,7 +236,8 @@ function reset() {
 function resetGameStats() {
   gameStats = {
     timer: null,
-    movesCount: 0
+    movesCount: 0,
+    starRating: 3
   };
 }
 
@@ -238,11 +249,84 @@ function updateMoves() {
   $moveControl.text(movesCount);
 }
 
+function getSeconds(time) {
+  var _time = time.split(':');
+  return (Number(_time[0]) * 60 + Number(_time[1])) || 1;
+}
+
+function getMoves() {
+  return movesCount || 1;
+}
+
+function calculateStars(isMatch = false) {
+  if (starRating <= 0.5) {
+    starRating = 0.5;
+    console.log('{}');
+    return;
+  } else {
+    // Update starRating using current matches, timer, moves and currentLevel['starRatingDivider']
+    var timeFactor = (currentLevel.minimumTimeInSec/getSeconds(timer)) * 60;
+    var moveFactor = (currentLevel.minimumMoves/getMoves());
+    var score = (timeFactor * moveFactor);
+    console.log(JSON.stringify({
+      'score': score,
+      'divider': currentLevel.divider,
+      'starRating': starRating,
+      'future': score / currentLevel.divider,
+      'timeF': timeFactor,
+      'moveF': moveFactor,
+      'isMatch': isMatch
+    }, null, 2));
+    starRating = (score / currentLevel.divider);
+    if (isMatch) {
+      starRating += 0.5;
+    }
+    if (starRating > 3) {
+      starRating = 3;
+    }
+    if (starRating <= 0.5) {
+      starRating = 0.5;
+    }
+    updateStars();
+    return;
+  }
+}
+
 function updateStars() {
-  const li_item = '<li><i class="fa fa-star"></i></li>';
+  const li_full_star = '<li><i class="fa fa-star"></i></li>';
+  const li_half_star = '<li><i class="fa fa-star-half"></i></li>';
   $starControl.empty();
-  for (var star = 0; star < starRating; star ++) {
-    $starControl.append(li_item);
+  if (isFloat(starRating)) {
+    for (var star = 0; star < starRating - 1; star ++) {
+      $starControl.append(li_full_star);
+    }
+    if (isFloat(starRating)) {
+      $starControl.append(li_half_star);
+    }
+  } else {
+    for (var star = 0; star < starRating; star ++) {
+      $starControl.append(li_full_star);
+    }
+  }
+}
+
+function generateStars(_starRating) {
+  $starRatingControl.empty();
+  const ul = '<ul class="stars"></ul>';
+  $starRatingControl.append(ul);
+  $starRatingListControl = $starRatingControl.find('.stars');
+  const li_full_star = '<li><i class="fa fa-star"></i></li>';
+  const li_half_star = '<li><i class="fa fa-star-half"></i></li>';
+  $starRatingListControl.empty();
+  if (isFloat(_starRating)) {
+    for (var star = 0; star < _starRating - 1; star ++) {
+      $starRatingListControl.append(li_full_star);
+    }
+    $starRatingListControl.append(li_half_star);
+  } else {
+    for (var star = 0; star < _starRating; star ++) {
+      $starRatingListControl.append(li_full_star);
+    }
   }
 }
 
@@ -250,9 +334,11 @@ function gameCompleted() {
   // save timer and movesCount before resetting
   gameStats = {
     timer: timer,
-    movesCount: movesCount
+    movesCount: movesCount,
+    starRating: starRating
   };
   reset();
+  generateStars(gameStats.starRating);
   $movesCounterControl.text(gameStats.movesCount);
   $completionTimeControl.text(gameStats.timer);
   $rightControl.click();

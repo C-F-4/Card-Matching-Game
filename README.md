@@ -4,7 +4,7 @@ A web based game to implement some concepts of Angular(2-way Data Binding, Event
 Memory Game Demo - The player can select a level and play on the appropriate size of board. The player has to flip all the cards to win the game.
 
 ### To-Do
-- [ ] Score Functionality (Based on Timer and number of Moves)
+- [x] Score Functionality (Based on Timer and number of Moves) - Done using Stars => Update Required
 - [ ] Responsive Board Layout
 - [ ] Card Flip Animation
 - [ ] UI Updates on Game completion Slide

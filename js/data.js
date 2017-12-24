@@ -13,26 +13,35 @@ const faClassList = [
 const gameLevels = {
   easy: {
     class: "easy",
-    pairs: 4
+    pairs: 4,
+    minimumMoves: 4*2 + 2,
+    minimumTimeInSec: 4*2 + 4/2 + 4/4,
+    divider: (4*2 + 2) * (4*2 + 4/2 + 4/4) * 2/6
   },
   medium: {
     class: "medium",
-    pairs: 6
+    pairs: 6,
+    minimumMoves: 6*2 + 3,
+    minimumTimeInSec: 6*2 + 6/2,
+    divider: (6*2 + 3) * (6*2 + 6/2) * 2/6
   },
   hard: {
     class: "hard",
-    pairs: 8
+    pairs: 8,
+    minimumMoves: 8*2 + 5,
+    minimumTimeInSec: 8*2 + 8/2 + 8/4 + 8/8,
+    divider: (8*2 + 5) * (8*2 + 8/2 + 8/4 + 8/8) * 2/6
   }
 };
 
 const errors = {
-    not_sufficient_cards: {
-        message: "There are insufficient cards to fill up the board without repition."
-    },
-    lost_timer: {
-        message: "Apparently, we have lost control of the timer or it was never started! Try refreshing the window."
-    },
-    general_error: {
-      message: "Some error occured. Try reloading the window."
-    }
-}
+  not_sufficient_cards: {
+    message: "There are insufficient cards to fill up the board without repition."
+  },
+  lost_timer: {
+    message: "Apparently, we have lost control of the timer or it was never started! Try refreshing the window."
+  },
+  general_error: {
+    message: "Some error occured. Try reloading the window."
+  }
+};
