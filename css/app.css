@@ -58,7 +58,7 @@ h1 {
   font-family: snigletextrabold, 'Open Sans', sans-serif;
   text-shadow: 0.3vh 0.3vh 0vh black, -0.3vh -0.3vh 0vh black, -0.3vh 0.3vh 0vh black, 0.3vh -0.3vh 0vh black, 0.3vh 0vh 0vh black, 0vh 0.3vh 0vh black, -0.3vh 0vh 0vh black, 0vh -0.3vh 0vh black, 0vh 0.5vh 0vh black;
   text-align: center;
-  font-size: 6vh;
+  font-size: clamp(1rem, 6vh, 4rem);;
   font-weight: 900;
   color: #ffaac7;
 }
@@ -196,7 +196,7 @@ h1 {
 
 .deck {
   width: 660px;
-  min-height: 85vh;
+/*   min-height: 85vh; */
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
   border-radius: 10px;
@@ -207,6 +207,7 @@ h1 {
   align-items: center;
   margin: 0 0 2em;
   z-index: 11;
+  gap: 1rem;
 }
 
 .deck .card {
